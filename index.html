@@ -13,6 +13,216 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
   <link rel="manifest" href="./assets/site.webmanifest">
   
+  <!-- i18n Configuration -->
+  <script>
+    // Current language setting
+    let currentLanguage = localStorage.getItem('language') || 'en';
+    
+    // i18n Translation Data
+    const translations = {
+      en: {
+        // Navigation & Header
+        'company_name': '[Your Company Name]',
+        'nav_services': 'Services',
+        'nav_products': 'Products',
+        'nav_about': 'About',
+        'nav_quote': 'Quote',
+        
+        // Hero Section
+        'hero_title': 'Where Precision Takes Shape',
+        
+        // Philosophy Section
+        'philosophy_subtitle': 'Our Philosophy',
+        'philosophy_title': 'The Art of Creation',
+        'philosophy_quote': 'We believe that engineering is an art form. It\'s the relentless pursuit of perfection, turning raw materials into components of absolute integrity. We are not just a factory; we are partners in creation.',
+        
+        // Services Section
+        'services_title': 'What We Offer',
+        'services_subtitle': 'Our Services',
+        'services_desc': 'From concept to completion, we transform your vision into reality with unmatched precision.',
+        
+        // Equipment Gallery Section
+        'gallery_title': 'Equipment Gallery',
+        'gallery_subtitle': 'Precision Machinery',
+        'metal_cutting_title': 'Metal Cutting Equipment',
+        'metal_cutting_desc': 'Advanced metal cutting machinery for precision manufacturing',
+        'metal_forming_title': 'Metal Forming Equipment', 
+        'metal_forming_desc': 'Professional metal forming equipment for sheet metal processing',
+        
+        // Metal Cutting Equipment
+        'cnc_machining_center': 'CNC Machining Center',
+        'cnc_machining_center_desc': 'Multi-axis CNC machining centers for high-precision machining of complex parts, equipped with automatic tool changer and high-speed spindle',
+        'cnc_lathe': 'CNC Lathe',
+        'cnc_lathe_desc': 'High-precision CNC lathes for rotary parts machining, equipped with live tooling and sub-spindle systems',
+        'milling_machine': 'Milling Machine',
+        'milling_machine_desc': 'Traditional and CNC milling equipment for machining planes, grooves, gears and other complex surfaces',
+        'drilling_machine': 'Drilling Machine',
+        'drilling_machine_desc': 'Various drilling equipment for precision hole machining, drilling, reaming, and boring operations',
+        'grinding_machine': 'Grinding Machine',
+        'grinding_machine_desc': 'High-precision grinding equipment providing surface grinding, internal and external cylindrical grinding services',
+        'boring_machine': 'Boring Machine',
+        'boring_machine_desc': 'Heavy-duty boring machines for precision boring and face machining of large parts',
+        'wire_edm': 'Wire EDM Machine',
+        'wire_edm_desc': 'Wire electrical discharge machining for precision cutting of complex surfaces and hard materials',
+        'spark_edm': 'Spark EDM Machine',
+        'spark_edm_desc': 'Electrical discharge machining for precision machining of mold cavities and complex internal cavities',
+        'gear_processing': 'Gear Processing Machine',
+        'gear_processing_desc': 'Professional gear processing equipment providing complete gear processing services including gear hobbing, shaping, and grinding',
+        
+        // Metal Forming Equipment
+        'punching_machine': 'Punching Machine',
+        'punching_machine_desc': 'High-speed punching equipment for punching, blanking, bending and forming of metal sheets',
+        'bending_machine': 'Bending Machine',
+        'bending_machine_desc': 'Precision CNC bending machines for precision bending and forming of sheet metal parts',
+        
+        // About Section
+        'about_title': 'About Us',
+        'about_subtitle': 'Our Story',
+        'about_desc': 'With decades of experience in precision manufacturing, we are committed to delivering excellence in every project.',
+        
+        // Contact Section
+        'contact_title': 'Get in Touch',
+        'contact_subtitle': 'Ready to bring your precision manufacturing project to life? Connect with our team of experts and discover how we can transform your concepts into reality.',
+        'form_first_name': 'First name',
+        'form_last_name': 'Last name',
+        'form_email': 'Your email address',
+        'form_company': 'Company name (optional)',
+        'form_phone': 'Phone number (optional)',
+        'form_message': 'Tell us about your project',
+        'form_submit': 'Send Email',
+        'preview_title': 'Precision Manufacturing Excellence',
+        'preview_description': 'From concept to completion, our advanced manufacturing capabilities deliver exceptional results that exceed industry standards.',
+        
+        // Footer
+        'footer_copyright': '© 2025 [Your Company Name] | [Your Address], China | Precision Manufacturing Solutions',
+        'footer_privacy': 'Privacy Policy',
+        'footer_terms': 'Terms of Service'
+      },
+      zh: {
+        // Navigation & Header
+        'company_name': '[您的公司名称]',
+        'nav_services': '服务',
+        'nav_products': '产品',
+        'nav_about': '关于我们',
+        'nav_quote': '报价',
+        
+        // Hero Section
+        'hero_title': '精度成型的地方',
+        
+        // Philosophy Section
+        'philosophy_subtitle': '我们的理念',
+        'philosophy_title': '创造的艺术',
+        'philosophy_quote': '我们相信工程是一门艺术。这是对完美的不懈追求，将原材料转化为绝对完整的组件。我们不仅仅是一家工厂；我们是创造的合作伙伴。',
+        
+        // Services Section
+        'services_title': '我们的服务',
+        'services_subtitle': '服务项目',
+        'services_desc': '从概念到完成，我们以无与伦比的精度将您的愿景转化为现实。',
+        
+        // Equipment Gallery Section
+        'gallery_title': '设备展示',
+        'gallery_subtitle': '精密机械',
+        'metal_cutting_title': '金属切削设备',
+        'metal_cutting_desc': '先进的金属切削机械，用于精密制造',
+        'metal_forming_title': '金属成型设备',
+        'metal_forming_desc': '专业的金属成型设备，用于钣金加工',
+        
+        // Metal Cutting Equipment
+        'cnc_machining_center': 'CNC加工中心',
+        'cnc_machining_center_desc': '多轴数控加工中心，适用于复杂零件的高精度加工，配备自动换刀系统和高速主轴',
+        'cnc_lathe': 'CNC数控车床',
+        'cnc_lathe_desc': '高精度数控车床，专业用于回转体零件加工，配备动力刀具和副主轴系统',
+        'milling_machine': '铣床',
+        'milling_machine_desc': '传统与数控铣床设备，适用于平面、沟槽、齿轮等复杂型面的铣削加工',
+        'drilling_machine': '钻床',
+        'drilling_machine_desc': '多种规格钻床设备，专业用于精密孔加工、钻孔、扩孔、铰孔等操作',
+        'grinding_machine': '磨床',
+        'grinding_machine_desc': '高精度磨床设备，提供表面磨削、内外圆磨削等精密磨削服务',
+        'boring_machine': '镗床',
+        'boring_machine_desc': '重型镗床设备，专业用于大型零件的精密镗孔和端面加工',
+        'wire_edm': '线切割机床',
+        'wire_edm_desc': '电火花线切割加工，适用于复杂型面、硬质材料的精密切割',
+        'spark_edm': '电火花机床',
+        'spark_edm_desc': '电火花成型加工，专业用于模具型腔、复杂内腔的精密加工',
+        'gear_processing': '齿轮加工机床',
+        'gear_processing_desc': '专业齿轮加工设备，提供齿轮滚齿、插齿、磨齿等全套齿轮加工服务',
+        
+        // Metal Forming Equipment
+        'punching_machine': '冲床',
+        'punching_machine_desc': '高速冲压设备，专业用于金属板材的冲孔、落料、弯曲等成型加工',
+        'bending_machine': '折弯机',
+        'bending_machine_desc': '精密数控折弯机，专业用于钣金件的精密弯曲成型加工',
+        
+        // About Section
+        'about_title': '关于我们',
+        'about_subtitle': '我们的故事',
+        'about_desc': '凭借数十年的精密制造经验，我们致力于在每个项目中交付卓越成果。',
+        
+        // Contact Section
+        'contact_title': '联系我们',
+        'contact_subtitle': '准备将您的精密制造项目付诸实施？与我们的专家团队联系，了解我们如何将您的概念转化为现实。',
+        'form_first_name': '名字',
+        'form_last_name': '姓氏',
+        'form_email': '您的邮箱地址',
+        'form_company': '公司名称（可选）',
+        'form_phone': '电话号码（可选）',
+        'form_message': '告诉我们您的项目',
+        'form_submit': '发送邮件',
+        'preview_title': '精密制造卓越',
+        'preview_description': '从概念到完成，我们先进的制造能力提供超越行业标准的卓越成果。',
+        
+        // Footer
+        'footer_copyright': '© 2025 [您的公司名称] | [您的地址]，中国 | 精密制造解决方案',
+        'footer_privacy': '隐私政策',
+        'footer_terms': '服务条款'
+      }
+    };
+    
+    // Translation function
+    function t(key) {
+      return translations[currentLanguage][key] || translations['en'][key] || key;
+    }
+    
+    // Update content with translations
+    function updateLanguage() {
+      // Update text content
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = t(key);
+      });
+      
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.placeholder = t(key);
+      });
+    }
+    
+    // Set language
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      localStorage.setItem('language', lang);
+      updateLanguage();
+    }
+    
+    // Switch language and update buttons
+    function switchLanguage(lang) {
+      setLanguage(lang);
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(lang + '-btn').classList.add('active');
+    }
+    
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLanguage = localStorage.getItem('language') || 'en';
+      switchLanguage(savedLanguage);
+    });
+  </script>
+  
   <style>
     /* --- Google Fonts --- */
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Roboto:wght@300;400&family=Dancing+Script:wght@400;500;600;700&display=swap');
@@ -41,6 +251,20 @@
       line-height: 1.8;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
+      
+      /* Hide scrollbar for webkit browsers */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    body {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
 
     .container {
@@ -154,6 +378,52 @@
       color: white;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Language Switcher */
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 5px;
+      backdrop-filter: blur(10px);
+    }
+
+    .header.scrolled .language-switcher {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .lang-btn {
+      padding: 4px 12px;
+      border: none;
+      border-radius: 15px;
+      background: transparent;
+      color: var(--background-color);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled .lang-btn {
+      color: var(--primary-color);
+    }
+
+    .lang-btn.active {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .header.scrolled .lang-btn:hover:not(.active) {
+      background: rgba(0, 0, 0, 0.1);
     }
 
     /* Mobile menu toggle */
@@ -463,7 +733,7 @@
       }
     }
 
-    /* --- Services Section Card Layout --- */
+    /* --- Services Section Equipment Layout --- */
     .services-section {
       padding: 120px 0;
       background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
@@ -485,24 +755,70 @@
       animation: subtleFloat 30s ease-in-out infinite;
     }
 
+    /* Enhanced floating background animation */
     @keyframes subtleFloat {
       0%, 100% { 
-        transform: translate(0, 0) scale(1); 
+        transform: translate(0, 0) scale(1) rotate(0deg); 
         opacity: 1;
       }
-      33% { 
-        transform: translate(10px, -10px) scale(1.02); 
+      25% { 
+        transform: translate(10px, -10px) scale(1.02) rotate(0.5deg); 
         opacity: 0.8;
       }
-      66% { 
-        transform: translate(-10px, 10px) scale(0.98); 
+      50% { 
+        transform: translate(-5px, 5px) scale(0.98) rotate(-0.3deg); 
         opacity: 0.9;
       }
+      75% { 
+        transform: translate(8px, -5px) scale(1.01) rotate(0.2deg); 
+        opacity: 0.85;
+      }
+    }
+
+    /* Advanced loading states */
+    .equipment-card.loading {
+      opacity: 0.7;
+      transform: scale(0.98);
+      transition: all 0.3s ease;
+    }
+
+    .equipment-card.loaded {
+      opacity: 1;
+      transform: scale(1);
+      animation: cardAppear 0.6s ease-out forwards;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Progressive image loading effect */
+    .equipment-image {
+      background: linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 200%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    .equipment-image.loaded {
+      background: none;
+      animation: none;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% -200%; }
+      100% { background-position: 200% 200%; }
     }
 
     .services-header {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
 
     .services-title {
@@ -519,94 +835,543 @@
       margin: 0 auto;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 40px;
-      max-width: 100%;
-      margin: 0 5%;
+    /* Equipment Tabs */
+    .equipment-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
     }
 
-    .service-card {
+    .tab-button {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 123, 255, 0.1);
+      border-radius: 20px;
+      padding: 25px 35px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-width: 280px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent-color);
+    }
+
+    .tab-button.active {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 123, 255, 0.3);
+    }
+
+    .tab-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .tab-text {
+      font-family: var(--heading-font);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .tab-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      display: block;
+    }
+
+    /* Equipment Controls */
+    /* Equipment Content Panels */
+    .equipment-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .equipment-panel {
+      display: none;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .equipment-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .panel-title {
+      font-family: var(--heading-font);
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .panel-description {
+      font-size: 1.1rem;
+      color: var(--secondary-text);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Equipment Grid */
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .equipment-item {
+      position: relative;
+    }
+
+    .equipment-card {
       background: white;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
       position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .service-card:hover {
+    .equipment-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     }
 
-    .service-image {
+    .equipment-image {
       height: 250px;
       overflow: hidden;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
     }
 
-    .service-image img {
+    .equipment-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       transition: transform 0.3s ease;
     }
 
-    .service-card:hover .service-image img {
+    .equipment-card:hover .equipment-image img {
       transform: scale(1.05);
     }
 
-    .service-content {
-      padding: 30px;
+    .equipment-overlay {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 1;
     }
 
-    .service-title {
+    .equipment-badge {
+      background: linear-gradient(135deg, var(--accent-color), #ff6b6b);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .equipment-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .equipment-title {
+      font-family: var(--heading-font);
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .equipment-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--secondary-text);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .equipment-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .spec-item {
+      background: rgba(0, 123, 255, 0.1);
+      color: var(--accent-color);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Services Call to Action */
+    .services-cta {
+      margin-top: 80px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-content {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      padding: 50px 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-title {
       font-family: var(--heading-font);
       font-size: 2rem;
       color: var(--primary-color);
       margin-bottom: 15px;
     }
 
-    .service-description {
-      font-size: 1rem;
+    .cta-description {
+      font-size: 1.1rem;
+      color: var(--secondary-text);
+      margin-bottom: 30px;
       line-height: 1.6;
-      color: var(--secondary-text);
-      margin-bottom: 20px;
     }
 
-    .service-features {
-      list-style: none;
-      padding: 0;
+    .cta-button {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
     }
 
-    .service-features li {
-      font-size: 0.9rem;
-      color: var(--secondary-text);
-      margin-bottom: 8px;
-      position: relative;
-      padding-left: 20px;
+    .cta-button:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
     }
 
-    .service-features li::before {
-      content: '✓';
+    /* Image Gallery Features */
+    .image-gallery-indicator {
       position: absolute;
-      left: 0;
-      color: var(--accent-color);
-      font-weight: bold;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
     }
 
-    .service-overlay {
+    .gallery-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-dot.active {
+      background: white;
+      transform: scale(1.2);
+    }
+
+    /* Gallery carousel controls */
+    .gallery-controls {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .equipment-image:hover .gallery-controls {
+      opacity: 1;
+    }
+
+    .gallery-prev {
+      left: 10px;
+    }
+
+    .gallery-next {
+      right: 10px;
+    }
+
+    .gallery-control-btn {
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .gallery-control-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: scale(1.1);
+    }
+
+    .equipment-gallery {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+    }
+
+    .equipment-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .equipment-gallery img.active {
+      opacity: 1;
+    }
+
+    /* Equipment Detail Modal */
+    .equipment-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+      backdrop-filter: blur(20px);
+    }
+
+    .equipment-modal.active {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .equipment-modal.opening {
+      animation: modalOverlayIn 0.4s ease-in-out forwards;
+    }
+
+    /* .equipment-modal.closing {
+      animation: modalOverlayOut 0.3s ease-in-out forwards;
+    } */
+
+    @keyframes modalOverlayIn {
+      0% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+      }
+      100% {
+        opacity: 1;
+        backdrop-filter: blur(20px);
+      }
+    }
+
+    @keyframes modalOverlayOut {
+      0% {
+        opacity: 1;
+        backdrop-filter: blur(20px);
+      }
+      100% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+      }
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+      transform: scale(0.7) translateY(50px);
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    .equipment-modal.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    .equipment-modal.opening .modal-content {
+      animation: 0.1s ease-in-out forwards;
+    }
+
+    /* .equipment-modal.closing .modal-content {
+      animation: 0.1s ease-in-out forwards;
+    } */
+
+    @keyframes modalContentIn {
+      0% {
+        transform: scale(0.7) translateY(50px);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(0.85) translateY(20px);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalContentOut {
+      0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8) translateY(30px);
+        opacity: 0;
+      }
+    }
+
+    .modal-header {
+      padding: 30px 40px 20px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+    }
+
+    .modal-title {
+      font-family: var(--heading-font);
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .modal-subtitle {
+      color: var(--secondary-text);
+      font-size: 1.1rem;
+    }
+
+    .modal-gallery {
+      padding: 0;
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      padding: 30px 40px;
+    }
+
+    .modal-specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .spec-detail {
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .spec-label {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .spec-value {
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+    }
+
+    .modal-close {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: linear-gradient(135deg, var(--accent-color), #ff6b6b);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      background: rgba(0, 0, 0, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: scale(1.1);
     }
 
     /* --- Gallery Section --- */
@@ -1108,13 +1873,78 @@
         min-height: 250px;
       }
 
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+      /* Services section mobile styles */
+      .equipment-tabs {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px;
       }
 
-      .service-card {
-        margin: 0 20px;
+      .tab-button {
+        min-width: auto;
+        padding: 20px 25px;
+      }
+
+      .tab-text {
+        font-size: 1.1rem;
+      }
+
+      .tab-subtitle {
+        font-size: 0.85rem;
+      }
+
+      .equipment-controls {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .search-container {
+        min-width: auto;
+        width: 100%;
+      }
+
+      .filter-container {
+        min-width: auto;
+        width: 100%;
+      }
+
+      .equipment-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+      }
+
+      .equipment-grid.list-view .equipment-card {
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      .equipment-grid.list-view .equipment-image {
+        width: 100%;
+        min-width: 100%;
+        height: 200px;
+      }
+
+      .equipment-card {
+        margin: 0;
+      }
+
+      .panel-title {
+        font-size: 2rem;
+      }
+
+      .services-cta {
+        margin-top: 60px;
+      }
+
+      .cta-content {
+        padding: 40px 25px;
+        margin: 0 15px;
+      }
+
+      .cta-title {
+        font-size: 1.6rem;
       }
 
       .philosophy-quote {
@@ -1182,6 +2012,76 @@
         transform: rotate(-45deg) translate(7px, -6px);
       }
     }
+
+    @media (max-width: 480px) {
+      .equipment-image {
+        height: 200px;
+      }
+
+      .equipment-content {
+        padding: 20px;
+      }
+
+      .equipment-title {
+        font-size: 1.2rem;
+      }
+
+      .equipment-specs {
+        gap: 6px;
+      }
+
+      .spec-item {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+      }
+
+      .tab-icon {
+        font-size: 1.5rem;
+      }
+
+      .cta-content {
+        padding: 30px 20px;
+      }
+
+      .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+      }
+
+      .modal-header {
+        padding: 20px 25px 15px;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+      }
+
+      .modal-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .modal-body {
+        padding: 20px 25px;
+      }
+
+      .modal-specs {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .modal-gallery {
+        height: 250px;
+      }
+
+      .image-gallery-indicator {
+        bottom: 10px;
+      }
+
+      .gallery-dot {
+        width: 6px;
+        height: 6px;
+      }
+    }
   </style>
 </head>
 
@@ -1189,15 +2089,21 @@
 
   <header class="header" id="header">
     <div class="navbar">
-      <a href="#home" class="logo">[Your Company Name]</a>
+      <a href="#home" class="logo" data-i18n="company_name">[Your Company Name]</a>
       
       <!-- Desktop Navigation -->
       <nav class="nav-links" id="navLinks">
-        <a href="#services">Services</a>
-        <a href="#gallery">Products</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="">Quote</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#gallery" data-i18n="nav_products">Products</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" data-i18n="nav_quote">Quote</a>
       </nav>
+
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('en')" id="en-btn">EN</button>
+        <button class="lang-btn" onclick="switchLanguage('zh')" id="zh-btn">中文</button>
+      </div>
 
       <!-- Mobile Menu Toggle -->
       <div class="menu-toggle" id="menuToggle">
@@ -1216,7 +2122,7 @@
       <video autoplay loop muted playsinline id="hero-video" src="./assets/CNC.mp4" poster="./assets/CNC_Milling.png">
         <img src="./assets/CNC_Milling.png" alt="CNC Milling">
       </video>
-      <h1>Where Precision Takes Shape.</h1>
+      <h1 data-i18n="hero_title">Where Precision Takes Shape.</h1>
     </section>
 
     <!-- 2. The Philosophy / Intro Section -->
@@ -1224,11 +2130,11 @@
       <div class="container">
         <div class="philosophy-content">
           <div class="philosophy-header">
-            <div class="philosophy-subtitle">Our Philosophy</div>
-            <h2 class="philosophy-title">The Art of Creation</h2>
+            <div class="philosophy-subtitle" data-i18n="philosophy_subtitle">Our Philosophy</div>
+            <h2 class="philosophy-title" data-i18n="philosophy_title">The Art of Creation</h2>
           </div>
 
-          <div class="philosophy-quote">
+          <div class="philosophy-quote" data-i18n="philosophy_quote">
             We believe that engineering is an art form. It's the relentless pursuit of perfection, turning raw materials
             into components of absolute integrity. We are not just a factory; we are partners in creation.
           </div>
@@ -1263,108 +2169,535 @@
     <section class="content-section services-section" id="services">
       <div class="full-container">
         <div class="services-header">
-          <h2 class="services-title">Our Precision Craft</h2>
-          <p class="services-subtitle">Advanced manufacturing solutions that transform your concepts into reality with
-            unmatched precision and quality.</p>
+          <h2 class="services-title" data-i18n="services_title">Our Manufacturing Excellence</h2>
+          <p class="services-subtitle" data-i18n="services_desc">Comprehensive precision manufacturing capabilities powered by advanced equipment and expert craftsmanship</p>
         </div>
 
-        <div class="services-grid">
-          <!-- CNC Milling Card -->
-          <div class="service-card">
-            <div class="service-overlay">Premium Service</div>
-            <div class="service-image">
-              <img src="./assets/CNC_Milling.png" alt="CNC Milling in action">
+        <!-- Equipment Category Tabs -->
+        <div class="equipment-tabs">
+          <button class="tab-button active" data-category="cutting">
+            <span class="tab-icon">⚙️</span>
+            <span class="tab-text" data-i18n="metal_cutting_title">Metal Cutting Equipment</span>
+            <span class="tab-subtitle" data-i18n="metal_cutting_desc">Precision Machining Solutions</span>
+          </button>
+          <button class="tab-button" data-category="forming">
+            <span class="tab-icon">🔧</span>
+            <span class="tab-text" data-i18n="metal_forming_title">Metal Forming Equipment</span>
+            <span class="tab-subtitle" data-i18n="metal_forming_desc">Shaping & Forming Solutions</span>
+          </button>
+        </div>
+
+        <!-- Equipment Content Panels -->
+        <div class="equipment-content">
+          <!-- Metal Cutting Equipment Panel -->
+          <div class="equipment-panel active" id="cutting-panel">
+            <div class="panel-header">
+              <h3 class="panel-title" data-i18n="metal_cutting_title">Metal Cutting Equipment</h3>
+              <p class="panel-description" data-i18n="metal_cutting_desc">Advanced CNC machining centers for precision cutting, milling, turning, and specialized operations</p>
             </div>
-            <div class="service-content">
-              <h3 class="service-title">CNC Milling</h3>
-              <p class="service-description">Our multi-axis CNC milling centers sculpt complex geometries from blocks of
-                metal with micron-level accuracy. From aerospace components to medical devices, we bring intricate
-                designs to life.</p>
-              <ul class="service-features">
-                <li>5-axis precision machining</li>
-                <li>Tolerances to ±0.001"</li>
-                <li>Aerospace & medical grade</li>
-                <li>Complex geometries</li>
-              </ul>
+            
+            <div class="equipment-grid">
+              <!-- CNC Machining Centers -->
+              <div class="equipment-item" data-category="premium automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/加工中心cnc/1758272146466.png" alt="CNC Machining Center" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">Premium</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="cnc_machining_center">CNC Machining Center</h4>
+                    <p class="equipment-description" data-i18n="cnc_machining_center_desc">Multi-axis CNC machining centers for high-precision machining of complex parts, equipped with automatic tool changer and high-speed spindle</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">5轴联动</span>
+                      <span class="spec-item">±0.001"精度</span>
+                      <span class="spec-item">自动换刀</span>
+                      <span class="spec-item">高速主轴</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="cnc">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272146466.png" alt="CNC加工中心1">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272607623.png" alt="CNC加工中心2">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272674704.png" alt="CNC加工中心4">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272691358.png" alt="CNC加工中心5">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272718754.png" alt="CNC加工中心6">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CNC Lathes -->
+              <div class="equipment-item" data-category="high-volume automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/车床/1758119460763.png" alt="CNC Lathe" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">高产能</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="cnc_lathe">CNC Lathe</h4>
+                    <p class="equipment-description" data-i18n="cnc_lathe_desc">High-precision CNC lathes for rotary parts machining, equipped with live tooling and sub-spindle systems</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">动力刀具</span>
+                      <span class="spec-item">副主轴</span>
+                      <span class="spec-item">棒料给料</span>
+                      <span class="spec-item">自动化</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="lathe">
+                      <img src="./assets/金属切削机床/车床/1758119460763.png" alt="数控车床1">
+                      <img src="./assets/金属切削机床/车床/1758119509203.png" alt="数控车床2">
+                      <img src="./assets/金属切削机床/车床/1758119525799.png" alt="数控车床3">
+                      <img src="./assets/金属切削机床/车床/1758119539128.png" alt="数控车床4">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milling Machines -->
+              <div class="equipment-item" data-category="precision">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/铣床/1758270205463.png" alt="Milling Machine" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">通用型</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="milling_machine">Milling Machine</h4>
+                    <p class="equipment-description" data-i18n="milling_machine_desc">Traditional and CNC milling equipment for machining planes, grooves, gears and other complex surfaces</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">立/卧铣</span>
+                      <span class="spec-item">重型加工</span>
+                      <span class="spec-item">高精度</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="milling">
+                      <img src="./assets/金属切削机床/铣床/1758270205463.png" alt="铣床1">
+                      <img src="./assets/金属切削机床/铣床/1758270226881.png" alt="铣床2">
+                      <img src="./assets/金属切削机床/铣床/1758270244040.png" alt="铣床3">
+                      <img src="./assets/金属切削机床/铣床/1758270270275.png" alt="铣床4">
+                      <img src="./assets/金属切削机床/铣床/1758270284175.png" alt="铣床5">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Drilling Machines -->
+              <div class="equipment-item" data-category="automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/钻床/1758270872688.png" alt="Drilling Machine" loading="lazy">
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="drilling_machine">Drilling Machine</h4>
+                    <p class="equipment-description" data-i18n="drilling_machine_desc">Various drilling machines for precision hole processing, drilling, reaming and boring operations</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">多主轴</span>
+                      <span class="spec-item">深孔钻</span>
+                      <span class="spec-item">自动进给</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="drilling">
+                      <img src="./assets/金属切削机床/钻床/1758270872688.png" alt="钻床1">
+                      <img src="./assets/金属切削机床/钻床/1758270895104.png" alt="钻床2">
+                      <img src="./assets/金属切削机床/钻床/1758270915680.png" alt="钻床3">
+                      <img src="./assets/金属切削机床/钻床/1758270932544.png" alt="钻床4">
+                      <img src="./assets/金属切削机床/钻床/1758270952768.png" alt="钻床5">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grinding Machines -->
+              <div class="equipment-item" data-category="premium">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/磨床/1758182448699.png" alt="Grinding Machine" loading="lazy">
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="grinding_machine">Grinding Machine</h4>
+                    <p class="equipment-description" data-i18n="grinding_machine_desc">High-precision grinding equipment for surface, internal and external cylindrical grinding services</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">镜面光洁度</span>
+                      <span class="spec-item">紧公差</span>
+                      <span class="spec-item">自动测量</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="grinding">
+                      <img src="./assets/金属切削机床/磨床/1758182448699.png" alt="磨床1">
+                      <img src="./assets/金属切削机床/磨床/1758182464143.png" alt="磨床2">
+                      <img src="./assets/金属切削机床/磨床/1758182479479.png" alt="磨床3">
+                      <img src="./assets/金属切削机床/磨床/1758182492079.png" alt="磨床4">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Boring Machines -->
+              <div class="equipment-item" data-category="precision">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/镗床/1758381509448.png" alt="Boring Machine" loading="lazy">
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="boring_machine">Boring Machine</h4>
+                    <p class="equipment-description" data-i18n="boring_machine_desc">Heavy-duty boring machines for precision boring and face milling of large components</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">大型零件</span>
+                      <span class="spec-item">精密镗孔</span>
+                      <span class="spec-item">重载加工</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="boring">
+                      <img src="./assets/金属切削机床/镗床/1758381509448.png" alt="镗床1">
+                      <img src="./assets/金属切削机床/镗床/1758381530529.png" alt="镗床2">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Wire EDM -->
+              <div class="equipment-item" data-category="premium">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/线切割机床/1758381135793.png" alt="Wire EDM" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">超精密</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="wire_edm">Wire EDM</h4>
+                    <p class="equipment-description" data-i18n="wire_edm_desc">Wire electrical discharge machining for complex profiles and hard material precision cutting</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">复杂型面</span>
+                      <span class="spec-item">硬质材料</span>
+                      <span class="spec-item">无工具磨损</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="wire-edm">
+                      <img src="./assets/金属切削机床/线切割机床/1758381135793.png" alt="线切割机床1">
+                      <img src="./assets/金属切削机床/线切割机床/1758381157825.png" alt="线切割机床2">
+                      <img src="./assets/金属切削机床/线切割机床/1758381170875.png" alt="线切割机床3">
+                      <img src="./assets/金属切削机床/线切割机床/1758381185907.png" alt="线切割机床4">
+                      <img src="./assets/金属切削机床/线切割机床/1758381202755.png" alt="线切割机床5">
+                      <img src="./assets/金属切削机床/线切割机床/1758381219435.png" alt="线切割机床6">
+                      <img src="./assets/金属切削机床/线切割机床/1758381254796.png" alt="线切割机床7">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Spark EDM -->
+              <div class="equipment-item" data-category="premium">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/电火花/1758380330477.png" alt="Spark EDM" loading="lazy">
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="spark_edm">Spark EDM</h4>
+                    <p class="equipment-description" data-i18n="spark_edm_desc">Electrical discharge machining for mold cavities and complex internal chamber precision machining</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">3D型腔</span>
+                      <span class="spec-item">工具钢</span>
+                      <span class="spec-item">微细特征</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="spark-edm">
+                      <img src="./assets/金属切削机床/电火花/1758380330477.png" alt="电火花机床1">
+                      <img src="./assets/金属切削机床/电火花/1758380354222.png" alt="电火花机床2">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gear Processing -->
+              <div class="equipment-item" data-category="precision automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属切削机床/齿轮加工机床/1758120072567.png" alt="Gear Processing Machine" loading="lazy">
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title" data-i18n="gear_processing">Gear Processing Machine</h4>
+                    <p class="equipment-description" data-i18n="gear_processing_desc">Specialized gear machining equipment for gear cutting, shaping, and grinding services</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">齿轮滚齿</span>
+                      <span class="spec-item">齿轮磨削</span>
+                      <span class="spec-item">高精度</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="gear">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120072567.png" alt="齿轮加工机床1">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120143388.png" alt="齿轮加工机床2">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120173560.png" alt="齿轮加工机床3">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120183816.png" alt="齿轮加工机床4">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120199912.png" alt="齿轮加工机床5">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120215616.png" alt="齿轮加工机床6">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- CNC Turning Card -->
-          <div class="service-card">
-            <div class="service-overlay">High Volume</div>
-            <div class="service-image">
-              <img src="./assets/Image2.png" alt="A precisely turned metal part">
+          <!-- Metal Forming Equipment Panel -->
+          <div class="equipment-panel" id="forming-panel">
+            <div class="panel-header">
+              <h3 class="panel-title" data-i18n="metal_forming_title">Metal Forming Equipment</h3>
+              <p class="panel-description" data-i18n="metal_forming_desc">Advanced forming and shaping equipment for precision metalworking operations</p>
             </div>
-            <div class="service-content">
-              <h3 class="service-title">CNC Turning</h3>
-              <p class="service-description">For cylindrical parts requiring perfect symmetry and flawless surface
-                finishes, our CNC lathes provide unmatched speed and consistency. We craft components that are as
-                beautiful as they are functional.</p>
-              <ul class="service-features">
-                <li>Perfect cylindrical precision</li>
-                <li>Superior surface finishes</li>
-                <li>High-speed production</li>
-                <li>Automated processes</li>
-              </ul>
+            
+            <div class="equipment-grid">
+              <!-- Punching Machines -->
+              <div class="equipment-item" data-category="high-volume automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属成型机床/冲床/1758517219252.png" alt="Punching Machine" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">高速冲压</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title">冲床</h4>
+                    <p class="equipment-description">高速冲压设备，专业用于金属板材的冲孔、落料、弯曲等成型加工</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">连续模具</span>
+                      <span class="spec-item">自动送料</span>
+                      <span class="spec-item">高产量</span>
+                      <span class="spec-item">精密成型</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="punch">
+                      <img src="./assets/金属成型机床/冲床/1758517219252.png" alt="冲床1">
+                      <img src="./assets/金属成型机床/冲床/1758517239456.png" alt="冲床2">
+                      <img src="./assets/金属成型机床/冲床/1758517251032.png" alt="冲床3">
+                      <img src="./assets/金属成型机床/冲床/1758517265301.png" alt="冲床4">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bending Machines -->
+              <div class="equipment-item" data-category="precision automation">
+                <div class="equipment-card">
+                  <div class="equipment-image">
+                    <img src="./assets/金属成型机床/折弯机/1758517446788.png" alt="Bending Machine" loading="lazy">
+                    <!-- <div class="equipment-overlay">
+                      <span class="equipment-badge">精密折弯</span>
+                    </div> -->
+                    <!-- Gallery carousel controls -->
+                    <div class="gallery-controls gallery-prev">
+                      <button class="gallery-control-btn" data-direction="prev" aria-label="Previous image">
+                        &#8249;
+                      </button>
+                    </div>
+                    <div class="gallery-controls gallery-next">
+                      <button class="gallery-control-btn" data-direction="next" aria-label="Next image">
+                        &#8250;
+                      </button>
+                    </div>
+                    <div class="image-gallery-indicator">
+                      <span class="gallery-dot active"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                      <span class="gallery-dot"></span>
+                    </div>
+                  </div>
+                  <div class="equipment-content">
+                    <h4 class="equipment-title">折弯机</h4>
+                    <p class="equipment-description">精密数控折弯机，专业用于钣金件的精密弯曲成型加工</p>
+                    <!-- <div class="equipment-specs">
+                      <span class="spec-item">数控系统</span>
+                      <span class="spec-item">后挡料</span>
+                      <span class="spec-item">多次折弯</span>
+                      <span class="spec-item">高精度</span>
+                    </div> -->
+                    <div class="equipment-gallery" data-category="bending">
+                      <img src="./assets/金属成型机床/折弯机/1758517446788.png" alt="折弯机1">
+                      <img src="./assets/金属成型机床/折弯机/1758517465707.png" alt="折弯机2">
+                      <img src="./assets/金属成型机床/折弯机/1758517475359.png" alt="折弯机3">
+                      <img src="./assets/金属成型机床/折弯机/1758517485155.png" alt="折弯机4">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            
           </div>
+        </div>
 
-          <!-- Wire EDM Card -->
-          <div class="service-card">
-            <div class="service-overlay">Precision Cutting</div>
-            <div class="service-image">
-              <img src="./assets/Image3.png" alt="Wire EDM cutting process">
-            </div>
-            <div class="service-content">
-              <h3 class="service-title">Wire EDM Cutting</h3>
-              <p class="service-description">Our electrical discharge machining technology cuts through the hardest
-                materials with incredible precision. Perfect for complex profiles, tight tolerances, and hard-to-machine
-                materials.</p>
-              <ul class="service-features">
-                <li>Ultra-precise wire cutting</li>
-                <li>Complex 2D & 3D profiles</li>
-                <li>Hardened materials capable</li>
-                <li>No mechanical stress</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Surface Treatment & Heat Treatment Card -->
-          <!-- <div class="service-card">
-            <div class="service-overlay">Enhanced Properties</div>
-            <div class="service-image">
-              <img src="https://picsum.photos/400/250?random=12" alt="Surface treatment process">
-            </div>
-            <div class="service-content">
-              <h3 class="service-title">Surface & Heat Treatment</h3>
-              <p class="service-description">Complete finishing solutions including anodizing, plating, coating, and heat treatment processes. We enhance both the functional properties and aesthetic appeal of your components.</p>
-              <ul class="service-features">
-                <li>Anodizing & electroplating</li>
-                <li>Heat treatment processes</li>
-                <li>Corrosion resistance</li>
-                <li>Custom color finishes</li>
-              </ul>
-            </div>
-          </div> -->
-
-          <!-- Multi-Material Support Card -->
-          <div class="service-card">
-            <div class="service-overlay">Versatile Solutions</div>
-            <div class="service-image">
-              <img src="./assets/Image1.png" alt="Various material samples">
-            </div>
-            <div class="service-content">
-              <h3 class="service-title">Multi-Material Expertise</h3>
-              <p class="service-description">From aluminum and steel to titanium and exotic alloys, we work with a
-                comprehensive range of materials. Our expertise ensures optimal processing parameters for each material
-                type.</p>
-              <ul class="service-features">
-                <li>Aluminum & steel alloys</li>
-                <li>Titanium & superalloys</li>
-                <li>Plastics & composites</li>
-                <li>Exotic materials</li>
-              </ul>
-            </div>
+        <!-- Call to Action -->
+        <div class="services-cta">
+          <div class="cta-content">
+            <h3 class="cta-title">Ready to Start Your Project?</h3>
+            <p class="cta-description">Discover how our advanced equipment and expertise can bring your manufacturing vision to life</p>
+            <a href="#contact" class="cta-button">Request Quote</a>
           </div>
         </div>
       </div>
@@ -1476,21 +2809,21 @@
   <footer class="footer" id="contact">
     <div class="footer-content">
       <div class="contact-form-section">
-        <h2>Get in Touch</h2>
-        <p class="footer-subtitle">Ready to bring your precision manufacturing project to life? Connect with our team of experts and discover how we can transform your concepts into reality.</p>
+        <h2 data-i18n="contact_title">Get in Touch</h2>
+        <p class="footer-subtitle" data-i18n="contact_subtitle">Ready to bring your precision manufacturing project to life? Connect with our team of experts and discover how we can transform your concepts into reality.</p>
         
         <form class="contact-form" id="contactForm">
           <div class="form-row">
-            <input type="text" class="form-input" name="firstName" placeholder="First name" required>
-            <input type="text" class="form-input" name="lastName" placeholder="Last name" required>
+            <input type="text" class="form-input" name="firstName" data-i18n-placeholder="form_first_name" placeholder="First name" required>
+            <input type="text" class="form-input" name="lastName" data-i18n-placeholder="form_last_name" placeholder="Last name" required>
           </div>
-          <input type="email" class="form-input full-width" name="email" placeholder="Your email address" required>
-          <input type="text" class="form-input full-width" name="company" placeholder="Company name (optional)">
-          <input type="tel" class="form-input full-width" name="phone" placeholder="Phone number (optional)">
-          <textarea class="form-input full-width" name="message" placeholder="Tell us about your project" rows="4" style="border-radius: 15px; resize: vertical;" required></textarea>
+          <input type="email" class="form-input full-width" name="email" data-i18n-placeholder="form_email" placeholder="Your email address" required>
+          <input type="text" class="form-input full-width" name="company" data-i18n-placeholder="form_company" placeholder="Company name (optional)">
+          <input type="tel" class="form-input full-width" name="phone" data-i18n-placeholder="form_phone" placeholder="Phone number (optional)">
+          <textarea class="form-input full-width" name="message" data-i18n-placeholder="form_message" placeholder="Tell us about your project" rows="4" style="border-radius: 15px; resize: vertical;" required></textarea>
           
           <div class="form-actions">
-            <button type="submit" class="btn-primary" id="submitBtn">
+            <button type="submit" class="btn-primary" id="submitBtn" data-i18n="form_submit">
               Send Email
             </button>
           </div>
@@ -1499,17 +2832,39 @@
       
       <div class="contact-preview">
         <img src="https://picsum.photos/400/200?random=20" alt="Manufacturing excellence" class="preview-image">
-        <div class="preview-title">Precision Manufacturing Excellence</div>
-        <div class="preview-description">
+        <div class="preview-title" data-i18n="preview_title">Precision Manufacturing Excellence</div>
+        <div class="preview-description" data-i18n="preview_description">
           From concept to completion, our advanced manufacturing capabilities deliver exceptional results that exceed industry standards.
         </div>
       </div>
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; 2025 [Your Company Name] | [Your Address], China | Precision Manufacturing Solutions</p>
+      <p data-i18n="footer_copyright">&copy; 2025 [Your Company Name] | [Your Address], China | Precision Manufacturing Solutions</p>
     </div>
   </footer>
+
+  <!-- Equipment Detail Modal -->
+  <div class="equipment-modal" id="equipmentModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">设备详情</h3>
+        <p class="modal-subtitle" id="modalSubtitle">专业制造设备介绍</p>
+      </div>
+      <div class="modal-gallery" id="modalGallery">
+        <!-- Gallery images will be inserted here -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-description" id="modalDescription">
+          <!-- Equipment description will be inserted here -->
+        </div>
+        <div class="modal-specs" id="modalSpecs">
+          <!-- Equipment specifications will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Header scroll effect
@@ -1612,6 +2967,498 @@ Timestamp: ${new Date().toLocaleString()}`;
       // 打开邮件客户端
       window.location.href = mailtoLink;
     });
+
+    // Equipment tabs functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const equipmentPanels = document.querySelectorAll('.equipment-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Remove active class from all tabs and panels
+        tabButtons.forEach(tab => tab.classList.remove('active'));
+        equipmentPanels.forEach(panel => panel.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding panel
+        button.classList.add('active');
+        document.getElementById(`${category}-panel`).classList.add('active');
+        
+        // No search/filter functionality needed
+      });
+    });
+
+    // Equipment card progressive loading and hover effects
+    const equipmentCards = document.querySelectorAll('.equipment-card');
+    
+    // Enhanced intersection observer for cards
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          card.classList.add('loading');
+          
+          // Simulate loading delay for smooth animation
+          setTimeout(() => {
+            card.classList.remove('loading');
+            card.classList.add('loaded');
+          }, 200);
+          
+          cardObserver.unobserve(card);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '50px' });
+
+    equipmentCards.forEach(card => {
+      cardObserver.observe(card);
+      
+      // Enhanced hover effects
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-12px) scale(1.02)';
+        this.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.2)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+      });
+    });
+
+    // Progressive image loading with shimmer effect
+    const equipmentImageContainers = document.querySelectorAll('.equipment-image');
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const container = entry.target;
+          const img = container.querySelector('img');
+          
+          if (img) {
+            img.onload = () => {
+              container.classList.add('loaded');
+            };
+            
+            // Trigger load if not already loaded
+            if (!img.complete) {
+              img.src = img.src;
+            } else {
+              container.classList.add('loaded');
+            }
+          }
+          
+          imageObserver.unobserve(container);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    equipmentImageContainers.forEach(container => {
+      imageObserver.observe(container);
+    });
+
+    // Enhanced Image gallery carousel functionality
+    const galleryIndicators = document.querySelectorAll('.image-gallery-indicator');
+    
+    galleryIndicators.forEach(indicator => {
+      const dots = indicator.querySelectorAll('.gallery-dot');
+      const card = indicator.closest('.equipment-card');
+      const gallery = card.querySelector('.equipment-gallery');
+      const mainImage = card.querySelector('.equipment-image img');
+      const imageContainer = card.querySelector('.equipment-image');
+      const prevBtn = imageContainer.querySelector('[data-direction="prev"]');
+      const nextBtn = imageContainer.querySelector('[data-direction="next"]');
+      
+      if (gallery) {
+        const galleryImages = gallery.querySelectorAll('img');
+        let currentIndex = 0;
+        
+        // Function to update the displayed image
+        const updateImage = (index) => {
+          // Update dots
+          dots.forEach(d => d.classList.remove('active'));
+          if (dots[index]) {
+            dots[index].classList.add('active');
+          }
+          
+          // Update main image with smooth transition
+          if (galleryImages[index]) {
+            mainImage.style.opacity = '0.7';
+            setTimeout(() => {
+              mainImage.src = galleryImages[index].src;
+              mainImage.alt = galleryImages[index].alt;
+              mainImage.style.opacity = '1';
+            }, 150);
+          }
+          
+          currentIndex = index;
+        };
+        
+        // Function to go to next image
+        const nextImage = () => {
+          const nextIndex = (currentIndex + 1) % galleryImages.length;
+          updateImage(nextIndex);
+        };
+        
+        // Function to go to previous image
+        const prevImage = () => {
+          const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+          updateImage(prevIndex);
+        };
+        
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateImage(index);
+          });
+        });
+        
+        // Navigation button handlers
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevImage();
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage();
+          });
+        }
+      }
+    });
+
+    // Equipment detail modal functionality
+    const modal = document.getElementById('equipmentModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalGallery = document.getElementById('modalGallery');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSpecs = document.getElementById('modalSpecs');
+
+    // Equipment data for modal display
+    const equipmentData = {
+      'cnc': {
+        title: 'CNC加工中心',
+        subtitle: '多轴数控加工中心 - 复杂零件精密加工解决方案',
+        description: '先进的多轴CNC加工中心，配备高速主轴、自动换刀系统和先进的数控系统。适用于航空航天、汽车、医疗器械等行业的复杂零件加工，能够实现±0.001"的加工精度。',
+        specs: [
+          { label: '加工精度', value: '±0.001" (±0.025mm)' },
+          { label: '主轴转速', value: '最高 24,000 RPM' },
+          { label: '加工行程', value: 'X: 1000mm, Y: 600mm, Z: 600mm' },
+          { label: '刀库容量', value: '40把刀具自动换刀' },
+          { label: '工作台承重', value: '最大 1000kg' },
+          { label: '控制系统', value: 'FANUC/Siemens数控系统' }
+        ],
+        images: [
+          './assets/金属切削机床/加工中心cnc/1758272146466.png',
+          './assets/金属切削机床/加工中心cnc/1758272607623.png',
+          './assets/金属切削机床/加工中心cnc/1758272655622.png',
+          './assets/金属切削机床/加工中心cnc/1758272674704.png'
+        ]
+      },
+      'lathe': {
+        title: 'CNC数控车床',
+        subtitle: '高精度数控车床 - 回转体零件加工专家',
+        description: '配备动力刀具和副主轴的高精度数控车床，专业用于回转体零件的车削加工。支持复合加工，一次装夹完成多道工序，提高加工效率和精度。',
+        specs: [
+          { label: '加工精度', value: '±0.002" (±0.05mm)' },
+          { label: '主轴转速', value: '最高 6,000 RPM' },
+          { label: '最大加工直径', value: 'Φ320mm' },
+          { label: '最大加工长度', value: '500mm' },
+          { label: '动力刀具', value: '12工位动力刀塔' },
+          { label: '副主轴', value: '背轴同步加工' }
+        ],
+        images: [
+          './assets/金属切削机床/车床/1758119460763.png',
+          './assets/金属切削机床/车床/1758119509203.png',
+          './assets/金属切削机床/车床/1758119525799.png',
+          './assets/金属切削机床/车床/1758119539128.png'
+        ]
+      },
+      'milling': {
+        title: '铣床',
+        subtitle: '精密铣削设备 - 多样化铣削加工解决方案',
+        description: '传统与数控铣床设备，适用于平面、沟槽、齿轮等复杂型面的铣削加工。配备高精度传动系统和强力切削能力，满足多种材料的加工需求。',
+        specs: [
+          { label: '加工精度', value: '±0.005mm' },
+          { label: '主轴功率', value: '15-30 kW' },
+          { label: '工作台尺寸', value: '1600×400mm' },
+          { label: '最大切削直径', value: 'Φ100mm' },
+          { label: '进给速度', value: '1-3000 mm/min' },
+          { label: '加工方式', value: '立式/卧式铣削' }
+        ],
+        images: [
+          './assets/金属切削机床/铣床/1758270205463.png',
+          './assets/金属切削机床/铣床/1758270226881.png',
+          './assets/金属切削机床/铣床/1758270244040.png',
+          './assets/金属切削机床/铣床/1758270270275.png',
+          './assets/金属切削机床/铣床/1758270284175.png'
+        ]
+      },
+      'drilling': {
+        title: '钻床',
+        subtitle: '精密钻孔设备 - 高效孔加工解决方案',
+        description: '多种规格钻床设备，专业用于精密孔加工、钻孔、扩孔、铰孔等操作。配备自动进给系统和深孔钻削功能，适用于各种材料的孔加工。',
+        specs: [
+          { label: '钻孔精度', value: '±0.01mm' },
+          { label: '最大钻孔直径', value: 'Φ50mm' },
+          { label: '钻孔深度', value: '最深 500mm' },
+          { label: '主轴锥度', value: 'MT4/MT5' },
+          { label: '进给方式', value: '手动/自动进给' },
+          { label: '加工能力', value: '多轴同时钻孔' }
+        ],
+        images: [
+          './assets/金属切削机床/钻床/1758270872688.png',
+          './assets/金属切削机床/钻床/1758270895104.png',
+          './assets/金属切削机床/钻床/1758270915680.png',
+          './assets/金属切削机床/钻床/1758270932544.png',
+          './assets/金属切削机床/钻床/1758270952768.png'
+        ]
+      },
+      'grinding': {
+        title: '磨床',
+        subtitle: '超精密磨削设备 - 镜面光洁度加工',
+        description: '高精度磨床设备，提供表面磨削、内外圆磨削等精密磨削服务。能够实现镜面光洁度和极紧公差，适用于精密零件的最终加工。',
+        specs: [
+          { label: '磨削精度', value: '±0.001mm' },
+          { label: '表面粗糙度', value: 'Ra 0.1μm' },
+          { label: '砂轮尺寸', value: 'Φ400×50mm' },
+          { label: '工作台尺寸', value: '500×200mm' },
+          { label: '砂轮转速', value: '1800 RPM' },
+          { label: '自动测量', value: '在线尺寸检测' }
+        ],
+        images: [
+          './assets/金属切削机床/磨床/1758182448699.png',
+          './assets/金属切削机床/磨床/1758182464143.png',
+          './assets/金属切削机床/磨床/1758182479479.png',
+          './assets/金属切削机床/磨床/1758182492079.png'
+        ]
+      },
+      'boring': {
+        title: '镗床',
+        subtitle: '重型镗削设备 - 大型零件精密加工',
+        description: '重型镗床设备，专业用于大型零件的精密镗孔和端面加工。具有强大的切削能力和高刚性结构，适用于重载切削和精密镗孔。',
+        specs: [
+          { label: '镗孔精度', value: '±0.01mm' },
+          { label: '最大镗孔直径', value: 'Φ200mm' },
+          { label: '主轴功率', value: '22 kW' },
+          { label: '工作台承重', value: '5000 kg' },
+          { label: '镗轴行程', value: '1000mm' },
+          { label: '控制系统', value: 'FANUC数控系统' }
+        ],
+        images: [
+          './assets/金属切削机床/镗床/1758381509448.png',
+          './assets/金属切削机床/镗床/1758381530529.png'
+        ]
+      },
+      'wire-edm': {
+        title: '线切割机床',
+        subtitle: '电火花线切割 - 超精密无接触加工',
+        description: '电火花线切割加工，适用于复杂型面、硬质材料的精密切割。无工具磨损，能够加工各种导电材料，实现复杂轮廓和精密型腔的加工。',
+        specs: [
+          { label: '切割精度', value: '±0.002mm' },
+          { label: '表面粗糙度', value: 'Ra 0.8μm' },
+          { label: '最大工件尺寸', value: '400×300×200mm' },
+          { label: '线径范围', value: 'Φ0.1-0.3mm' },
+          { label: '切割速度', value: '80-120 mm²/min' },
+          { label: '最大切割厚度', value: '200mm' }
+        ],
+        images: [
+          './assets/金属切削机床/线切割机床/1758381135793.png',
+          './assets/金属切削机床/线切割机床/1758381157825.png',
+          './assets/金属切削机床/线切割机床/1758381170875.png',
+          './assets/金属切削机床/线切割机床/1758381185907.png',
+          './assets/金属切削机床/线切割机床/1758381202755.png',
+          './assets/金属切削机床/线切割机床/1758381219435.png',
+          './assets/金属切削机床/线切割机床/1758381254796.png'
+        ]
+      },
+      'spark-edm': {
+        title: '电火花机床',
+        subtitle: '电火花成型加工 - 复杂型腔精密制造',
+        description: '电火花成型加工，专业用于模具型腔、复杂内腔的精密加工。适用于硬质合金、工具钢等难加工材料，能够制造复杂的三维型腔。',
+        specs: [
+          { label: '加工精度', value: '±0.005mm' },
+          { label: '表面粗糙度', value: 'Ra 0.4μm' },
+          { label: '最大工件重量', value: '500 kg' },
+          { label: '电极材料', value: '铜/石墨电极' },
+          { label: '最大加工深度', value: '300mm' },
+          { label: '自动换电极', value: '支持自动换电极' }
+        ],
+        images: [
+          './assets/金属切削机床/电火花/1758380330477.png',
+          './assets/金属切削机床/电火花/1758380354222.png'
+        ]
+      },
+      'gear': {
+        title: '齿轮加工机床',
+        subtitle: '专业齿轮制造 - 全套齿轮加工解决方案',
+        description: '专业齿轮加工设备，提供齿轮滚齿、插齿、磨齿等全套齿轮加工服务。适用于各种模数和精度等级的齿轮制造，满足传动系统的高精度要求。',
+        specs: [
+          { label: '齿轮精度', value: 'DIN 5级精度' },
+          { label: '最大模数', value: 'm12' },
+          { label: '最大齿轮直径', value: 'Φ320mm' },
+          { label: '齿宽范围', value: '5-120mm' },
+          { label: '加工类型', value: '滚齿/插齿/磨齿' },
+          { label: '控制系统', value: 'CNC数控系统' }
+        ],
+        images: [
+          './assets/金属切削机床/齿轮加工机床/1758120072567.png',
+          './assets/金属切削机床/齿轮加工机床/1758120143388.png',
+          './assets/金属切削机床/齿轮加工机床/1758120173560.png',
+          './assets/金属切削机床/齿轮加工机床/1758120183816.png',
+          './assets/金属切削机床/齿轮加工机床/1758120199912.png',
+          './assets/金属切削机床/齿轮加工机床/1758120215616.png'
+        ]
+      },
+      'punch': {
+        title: '冲床',
+        subtitle: '高速冲压设备 - 钣金成型加工解决方案',
+        description: '高精度冲压设备，配备伺服送料系统和精密模具，专业用于金属板材的冲孔、落料、弯曲等成型加工。支持连续模和复合模作业。',
+        specs: [
+          { label: '冲压力', value: '63T - 315T' },
+          { label: '工作台面', value: '1600mm × 1000mm' },
+          { label: '滑块行程', value: '200mm' },
+          { label: '每分钟行程', value: '30-120次' },
+          { label: '送料精度', value: '±0.1mm' },
+          { label: '加工板厚', value: '0.5mm - 16mm' }
+        ],
+        images: [
+          './assets/金属成型机床/冲床/1758517219252.png',
+          './assets/金属成型机床/冲床/1758517239456.png',
+          './assets/金属成型机床/冲床/1758517251032.png',
+          './assets/金属成型机床/冲床/1758517265301.png'
+        ]
+      },
+      'bending': {
+        title: '折弯机',
+        subtitle: '精密折弯设备 - 钣金精密成型专家',
+        description: '精密数控折弯机，专业用于钣金件的精密弯曲成型加工。配备数控后挡料系统和精密液压系统，能够实现复杂的多次折弯加工。',
+        specs: [
+          { label: '弯曲力', value: '100T - 400T' },
+          { label: '工作长度', value: '2500mm - 6000mm' },
+          { label: '弯曲精度', value: '±0.01mm' },
+          { label: '后挡料精度', value: '±0.02mm' },
+          { label: '最大板厚', value: '25mm (钢板)' },
+          { label: '控制系统', value: 'CNC数控系统' }
+        ],
+        images: [
+          './assets/金属成型机床/折弯机/1758517446788.png',
+          './assets/金属成型机床/折弯机/1758517465707.png',
+          './assets/金属成型机床/折弯机/1758517475359.png',
+          './assets/金属成型机床/折弯机/1758517485155.png'
+        ]
+      }
+    };
+
+    // Open modal when clicking on equipment cards with gallery
+    // TEMPORARILY DISABLED: Modal functionality for Metal Cutting Equipment
+    /*
+    equipmentCards.forEach(card => {
+      const gallery = card.querySelector('.equipment-gallery');
+      if (gallery) {
+        card.addEventListener('click', () => {
+          const category = gallery.getAttribute('data-category');
+          const data = equipmentData[category];
+          
+          if (data) {
+            // Update modal content
+            modalTitle.textContent = data.title;
+            modalSubtitle.textContent = data.subtitle;
+            modalDescription.innerHTML = `<p>${data.description}</p>`;
+            
+            // Update gallery
+            modalGallery.innerHTML = '';
+            data.images.forEach((imageSrc, index) => {
+              const img = document.createElement('img');
+              img.src = imageSrc;
+              img.alt = `${data.title} ${index + 1}`;
+              img.style.display = index === 0 ? 'block' : 'none';
+              modalGallery.appendChild(img);
+            });
+            
+            // Update specifications
+            modalSpecs.innerHTML = '';
+            data.specs.forEach(spec => {
+              const specDiv = document.createElement('div');
+              specDiv.className = 'spec-detail';
+              specDiv.innerHTML = `
+                <div class="spec-label">${spec.label}</div>
+                <div class="spec-value">${spec.value}</div>
+              `;
+              modalSpecs.appendChild(specDiv);
+            });
+            
+            // Show modal with animation
+            modal.style.display = 'flex';
+            modal.classList.add('opening');
+            
+            // Add active class after a small delay for animation
+            requestAnimationFrame(() => {
+              modal.classList.add('active');
+            });
+            
+            document.body.style.overflow = 'hidden';
+            
+            // Remove opening class after animation
+            setTimeout(() => {
+              modal.classList.remove('opening');
+            }, 400);
+          }
+        });
+      }
+    });
+    */
+
+    // Close modal with animation
+    function closeModal() {
+      modal.classList.add('closing');
+      modal.classList.remove('active');
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('closing');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // Close modal
+    modalClose.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Lazy loading for equipment images
+    const equipmentImages = document.querySelectorAll('.equipment-image img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.src;
+            img.removeAttribute('loading');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      equipmentImages.forEach(img => imageObserver.observe(img));
+    }
   </script>
 
 </body>
