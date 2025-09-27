@@ -13,6 +13,19 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
   <link rel="manifest" href="./assets/site.webmanifest">
   
+  <!-- Preload Critical Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Roboto:wght@300;400&family=Dancing+Script:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Roboto:wght@300;400&family=Dancing+Script:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="preload" href="./assets/CNC.mp4" as="video" type="video/mp4">
+  <link rel="preload" href="./assets/CNC_Milling.png" as="image">
+  
+  <!-- Prefetch Secondary Resources -->
+  <link rel="prefetch" href="./assets/金属切削机床/加工中心cnc/1758272146466.png">
+  <link rel="prefetch" href="./assets/金属切削机床/车床/1758119460763.png">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  
   <!-- i18n Configuration -->
   <script>
     // Current language setting
@@ -258,24 +271,16 @@
       document.getElementById(lang + '-btn').classList.add('active');
     }
     
-    // Initialize language on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedLanguage = localStorage.getItem('language') || 'en';
-      switchLanguage(savedLanguage);
-    });
+    // Initialize language on page load - moved to bottom for better performance
+    // Language will be initialized after DOM is ready
   </script>
   
   <style>
-    /* --- Google Fonts --- */
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Roboto:wght@300;400&family=Dancing+Script:wght@400;500;600;700&display=swap');
-
-    /* --- Global Styles --- */
     :root {
       --primary-color: #111111;
       --background-color: #fdfdfd;
       --secondary-text: #666;
       --accent-color: #007BFF;
-      /* A single, sharp accent color */
       --heading-font: 'Playfair Display', serif;
       --body-font: 'Roboto', sans-serif;
     }
@@ -525,7 +530,6 @@
     .hero h1 {
       font-family: var(--heading-font);
       font-size: clamp(3rem, 10vw, 8rem);
-      /* Responsive font size */
       line-height: 1.1;
       color: var(--primary-color);
     }
@@ -534,9 +538,7 @@
     .content-section {
       padding: 120px 0;
       opacity: 0;
-      /* For scroll animation */
       transform: translateY(30px);
-      /* For scroll animation */
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
@@ -2276,11 +2278,11 @@
                       <span class="spec-item">高速主轴</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="cnc">
-                      <img src="./assets/金属切削机床/加工中心cnc/1758272146466.png" alt="CNC加工中心1">
-                      <img src="./assets/金属切削机床/加工中心cnc/1758272607623.png" alt="CNC加工中心2">
-                      <img src="./assets/金属切削机床/加工中心cnc/1758272674704.png" alt="CNC加工中心4">
-                      <img src="./assets/金属切削机床/加工中心cnc/1758272691358.png" alt="CNC加工中心5">
-                      <img src="./assets/金属切削机床/加工中心cnc/1758272718754.png" alt="CNC加工中心6">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272146466.png" alt="CNC加工中心1" loading="lazy">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272607623.png" alt="CNC加工中心2" loading="lazy">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272674704.png" alt="CNC加工中心4" loading="lazy">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272691358.png" alt="CNC加工中心5" loading="lazy">
+                      <img src="./assets/金属切削机床/加工中心cnc/1758272718754.png" alt="CNC加工中心6" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2322,10 +2324,10 @@
                       <span class="spec-item">自动化</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="lathe">
-                      <img src="./assets/金属切削机床/车床/1758119460763.png" alt="数控车床1">
-                      <img src="./assets/金属切削机床/车床/1758119509203.png" alt="数控车床2">
-                      <img src="./assets/金属切削机床/车床/1758119525799.png" alt="数控车床3">
-                      <img src="./assets/金属切削机床/车床/1758119539128.png" alt="数控车床4">
+                      <img src="./assets/金属切削机床/车床/1758119460763.png" alt="数控车床1" loading="lazy">
+                      <img src="./assets/金属切削机床/车床/1758119509203.png" alt="数控车床2" loading="lazy">
+                      <img src="./assets/金属切削机床/车床/1758119525799.png" alt="数控车床3" loading="lazy">
+                      <img src="./assets/金属切削机床/车床/1758119539128.png" alt="数控车床4" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2367,11 +2369,11 @@
                       <span class="spec-item">高精度</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="milling">
-                      <img src="./assets/金属切削机床/铣床/1758270205463.png" alt="铣床1">
-                      <img src="./assets/金属切削机床/铣床/1758270226881.png" alt="铣床2">
-                      <img src="./assets/金属切削机床/铣床/1758270244040.png" alt="铣床3">
-                      <img src="./assets/金属切削机床/铣床/1758270270275.png" alt="铣床4">
-                      <img src="./assets/金属切削机床/铣床/1758270284175.png" alt="铣床5">
+                      <img src="./assets/金属切削机床/铣床/1758270205463.png" alt="铣床1" loading="lazy">
+                      <img src="./assets/金属切削机床/铣床/1758270226881.png" alt="铣床2" loading="lazy">
+                      <img src="./assets/金属切削机床/铣床/1758270244040.png" alt="铣床3" loading="lazy">
+                      <img src="./assets/金属切削机床/铣床/1758270270275.png" alt="铣床4" loading="lazy">
+                      <img src="./assets/金属切削机床/铣床/1758270284175.png" alt="铣床5" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2410,11 +2412,11 @@
                       <span class="spec-item">自动进给</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="drilling">
-                      <img src="./assets/金属切削机床/钻床/1758270872688.png" alt="钻床1">
-                      <img src="./assets/金属切削机床/钻床/1758270895104.png" alt="钻床2">
-                      <img src="./assets/金属切削机床/钻床/1758270915680.png" alt="钻床3">
-                      <img src="./assets/金属切削机床/钻床/1758270932544.png" alt="钻床4">
-                      <img src="./assets/金属切削机床/钻床/1758270952768.png" alt="钻床5">
+                      <img src="./assets/金属切削机床/钻床/1758270872688.png" alt="钻床1" loading="lazy">
+                      <img src="./assets/金属切削机床/钻床/1758270895104.png" alt="钻床2" loading="lazy">
+                      <img src="./assets/金属切削机床/钻床/1758270915680.png" alt="钻床3" loading="lazy">
+                      <img src="./assets/金属切削机床/钻床/1758270932544.png" alt="钻床4" loading="lazy">
+                      <img src="./assets/金属切削机床/钻床/1758270952768.png" alt="钻床5" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2452,10 +2454,10 @@
                       <span class="spec-item">自动测量</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="grinding">
-                      <img src="./assets/金属切削机床/磨床/1758182448699.png" alt="磨床1">
-                      <img src="./assets/金属切削机床/磨床/1758182464143.png" alt="磨床2">
-                      <img src="./assets/金属切削机床/磨床/1758182479479.png" alt="磨床3">
-                      <img src="./assets/金属切削机床/磨床/1758182492079.png" alt="磨床4">
+                      <img src="./assets/金属切削机床/磨床/1758182448699.png" alt="磨床1" loading="lazy">
+                      <img src="./assets/金属切削机床/磨床/1758182464143.png" alt="磨床2" loading="lazy">
+                      <img src="./assets/金属切削机床/磨床/1758182479479.png" alt="磨床3" loading="lazy">
+                      <img src="./assets/金属切削机床/磨床/1758182492079.png" alt="磨床4" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2491,8 +2493,8 @@
                       <span class="spec-item">重载加工</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="boring">
-                      <img src="./assets/金属切削机床/镗床/1758381509448.png" alt="镗床1">
-                      <img src="./assets/金属切削机床/镗床/1758381530529.png" alt="镗床2">
+                      <img src="./assets/金属切削机床/镗床/1758381509448.png" alt="镗床1" loading="lazy">
+                      <img src="./assets/金属切削机床/镗床/1758381530529.png" alt="镗床2" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2536,13 +2538,13 @@
                       <span class="spec-item">无工具磨损</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="wire-edm">
-                      <img src="./assets/金属切削机床/线切割机床/1758381135793.png" alt="线切割机床1">
-                      <img src="./assets/金属切削机床/线切割机床/1758381157825.png" alt="线切割机床2">
-                      <img src="./assets/金属切削机床/线切割机床/1758381170875.png" alt="线切割机床3">
-                      <img src="./assets/金属切削机床/线切割机床/1758381185907.png" alt="线切割机床4">
-                      <img src="./assets/金属切削机床/线切割机床/1758381202755.png" alt="线切割机床5">
-                      <img src="./assets/金属切削机床/线切割机床/1758381219435.png" alt="线切割机床6">
-                      <img src="./assets/金属切削机床/线切割机床/1758381254796.png" alt="线切割机床7">
+                      <img src="./assets/金属切削机床/线切割机床/1758381135793.png" alt="线切割机床1" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381157825.png" alt="线切割机床2" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381170875.png" alt="线切割机床3" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381185907.png" alt="线切割机床4" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381202755.png" alt="线切割机床5" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381219435.png" alt="线切割机床6" loading="lazy">
+                      <img src="./assets/金属切削机床/线切割机床/1758381254796.png" alt="线切割机床7" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2578,8 +2580,8 @@
                       <span class="spec-item">微细特征</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="spark-edm">
-                      <img src="./assets/金属切削机床/电火花/1758380330477.png" alt="电火花机床1">
-                      <img src="./assets/金属切削机床/电火花/1758380354222.png" alt="电火花机床2">
+                      <img src="./assets/金属切削机床/电火花/1758380330477.png" alt="电火花机床1" loading="lazy">
+                      <img src="./assets/金属切削机床/电火花/1758380354222.png" alt="电火花机床2" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2619,12 +2621,12 @@
                       <span class="spec-item">高精度</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="gear">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120072567.png" alt="齿轮加工机床1">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120143388.png" alt="齿轮加工机床2">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120173560.png" alt="齿轮加工机床3">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120183816.png" alt="齿轮加工机床4">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120199912.png" alt="齿轮加工机床5">
-                      <img src="./assets/金属切削机床/齿轮加工机床/1758120215616.png" alt="齿轮加工机床6">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120072567.png" alt="齿轮加工机床1" loading="lazy">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120143388.png" alt="齿轮加工机床2" loading="lazy">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120173560.png" alt="齿轮加工机床3" loading="lazy">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120183816.png" alt="齿轮加工机床4" loading="lazy">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120199912.png" alt="齿轮加工机床5" loading="lazy">
+                      <img src="./assets/金属切削机床/齿轮加工机床/1758120215616.png" alt="齿轮加工机床6" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2676,10 +2678,10 @@
                       <span class="spec-item">精密成型</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="punch">
-                      <img src="./assets/金属成型机床/冲床/1758517219252.png" alt="冲床1">
-                      <img src="./assets/金属成型机床/冲床/1758517239456.png" alt="冲床2">
-                      <img src="./assets/金属成型机床/冲床/1758517251032.png" alt="冲床3">
-                      <img src="./assets/金属成型机床/冲床/1758517265301.png" alt="冲床4">
+                      <img src="./assets/金属成型机床/冲床/1758517219252.png" alt="冲床1" loading="lazy">
+                      <img src="./assets/金属成型机床/冲床/1758517239456.png" alt="冲床2" loading="lazy">
+                      <img src="./assets/金属成型机床/冲床/1758517251032.png" alt="冲床3" loading="lazy">
+                      <img src="./assets/金属成型机床/冲床/1758517265301.png" alt="冲床4" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -2721,10 +2723,10 @@
                       <span class="spec-item">高精度</span>
                     </div> -->
                     <div class="equipment-gallery" data-category="bending">
-                      <img src="./assets/金属成型机床/折弯机/1758517446788.png" alt="折弯机1">
-                      <img src="./assets/金属成型机床/折弯机/1758517465707.png" alt="折弯机2">
-                      <img src="./assets/金属成型机床/折弯机/1758517475359.png" alt="折弯机3">
-                      <img src="./assets/金属成型机床/折弯机/1758517485155.png" alt="折弯机4">
+                      <img src="./assets/金属成型机床/折弯机/1758517446788.png" alt="折弯机1" loading="lazy">
+                      <img src="./assets/金属成型机床/折弯机/1758517465707.png" alt="折弯机2" loading="lazy">
+                      <img src="./assets/金属成型机床/折弯机/1758517475359.png" alt="折弯机3" loading="lazy">
+                      <img src="./assets/金属成型机床/折弯机/1758517485155.png" alt="折弯机4" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -3501,6 +3503,12 @@ Timestamp: ${new Date().toLocaleString()}`;
 
       equipmentImages.forEach(img => imageObserver.observe(img));
     }
+
+    // Initialize language on page load - moved here for better performance
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLanguage = localStorage.getItem('language') || 'en';
+      switchLanguage(savedLanguage);
+    });
   </script>
 
 </body>
