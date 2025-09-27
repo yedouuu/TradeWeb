@@ -34,6 +34,9 @@
     // i18n Translation Data
     const translations = {
       en: {
+        // Loading Screen
+        'loading_text': 'Loading precision excellence...',
+        
         // Navigation & Header
         'company_name': 'YuanJian Machinery',
         'nav_services': 'Services',
@@ -133,6 +136,9 @@
         'footer_terms': 'Terms of Service'
       },
       zh: {
+        // Loading Screen
+        'loading_text': '加载精密制造卓越...',
+        
         // Navigation & Header
         'company_name': '缘建机械',
         'nav_services': '服务',
@@ -283,6 +289,234 @@
       --accent-color: #007BFF;
       --heading-font: 'Playfair Display', serif;
       --body-font: 'Roboto', sans-serif;
+    }
+
+    /* === Loading Screen === */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url('./assets/CNC_Milling.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    /* 优化背景效果 */
+    .loading-screen::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      animation: backgroundElegant 6s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loading-logo {
+      font-family: var(--heading-font);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 50px;
+      letter-spacing: 4px;
+      animation: logoElegant 4s ease-in-out infinite alternate;
+      position: relative;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+      padding: 20px 35px;
+      border-radius: 4px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .loading-logo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(37, 117, 252, 0.1), rgba(37, 117, 252, 0.05));
+      border-radius: 4px;
+      z-index: -1;
+      opacity: 0;
+      animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .loading-spinner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top: 1px solid rgba(255, 255, 255, 0.8);
+      animation: spinPrecision 2s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+      box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.1),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .loading-spinner::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      border: 1px solid transparent;
+      border-radius: 50%;
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+      animation: spinPrecision 3s linear infinite reverse;
+    }
+
+    .loading-progress {
+      width: 300px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      position: relative;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .loading-progress::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+      animation: shimmerElegant 3s linear infinite;
+    }
+
+    .loading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6));
+      border-radius: 2px;
+      transform: translateX(-100%);
+      animation: loadProgressElegant 4s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      position: relative;
+    }
+
+    .loading-text {
+      font-size: 0.85rem;
+      color: #ffffff;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-align: center;
+      opacity: 0.7;
+      animation: textElegant 4s ease-in-out infinite;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    /* 移除复杂的装饰性几何元素，保持简约 */
+    .loading-screen .decorative-shapes {
+      display: none;
+    }
+
+    /* === 高级简约动画关键帧 === */
+    @keyframes backgroundElegant {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes logoElegant {
+      0% { 
+        opacity: 0.8;
+        transform: translateY(0);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+    }
+
+    @keyframes logoGlow {
+      0% { opacity: 0; }
+      100% { opacity: 0.3; }
+    }
+
+    @keyframes spinPrecision {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes shimmerElegant {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { opacity: 0.3; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+
+    @keyframes loadProgressElegant {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes textElegant {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.8; }
+    }
+
+    /* 保持旧的动画以兼容 */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    @keyframes loadProgress {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0%); }
+    }
+
+    /* Hide main content initially instead of body */
+    .main-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     * {
@@ -2131,6 +2365,19 @@
 
 <body>
 
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <!-- 简约加载内容 -->
+    <div class="loading-logo">缘建机械</div>
+    <div class="loading-spinner"></div>
+    <div class="loading-progress">
+      <div class="loading-progress-bar"></div>
+    </div>
+    <div class="loading-text" id="loadingText">PRECISION ENGINEERING</div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="main-content" id="mainContent">
   <header class="header" id="header">
     <div class="navbar">
       <a href="#home" class="logo" data-i18n="company_name">[Your Company Name]</a>
@@ -3504,12 +3751,107 @@ Timestamp: ${new Date().toLocaleString()}`;
       equipmentImages.forEach(img => imageObserver.observe(img));
     }
 
+    // Loading Screen Management
+    function showMainContent() {
+      const mainContent = document.getElementById('mainContent');
+      
+      if (mainContent) {
+        setTimeout(() => {
+          mainContent.classList.add('visible');
+        }, 100);
+      }
+    }
+
+    function hideLoadingScreen() {
+      const loadingScreen = document.getElementById('loadingScreen');
+      if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+        showMainContent();
+        
+        // Remove loading screen from DOM after animation completes
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 600);
+      }
+    }
+
+    // Check if video is ready and hide loading screen
+    function checkVideoLoaded() {
+      const heroVideo = document.getElementById('hero-video');
+      const loadingText = document.getElementById('loadingText');
+      
+      // Update loading text based on current language
+      if (loadingText && translations[currentLanguage]) {
+        loadingText.textContent = translations[currentLanguage]['loading_text'] || 'Loading...';
+      }
+      
+      if (!heroVideo) {
+        // If no video, hide loading after a short delay
+        setTimeout(hideLoadingScreen, 1500);
+        return;
+      }
+
+      let isVideoReady = false;
+      let isPageReady = false;
+
+      function tryHideLoading() {
+        if (isVideoReady && isPageReady) {
+          hideLoadingScreen();
+        }
+      }
+
+      // Check if video is already loaded
+      if (heroVideo.readyState >= 3) { // HAVE_FUTURE_DATA
+        isVideoReady = true;
+        tryHideLoading();
+      } else {
+        // Wait for video to load
+        const videoLoadedHandler = () => {
+          isVideoReady = true;
+          tryHideLoading();
+          heroVideo.removeEventListener('canplaythrough', videoLoadedHandler);
+          heroVideo.removeEventListener('loadeddata', videoLoadedHandler);
+        };
+        
+        heroVideo.addEventListener('canplaythrough', videoLoadedHandler);
+        heroVideo.addEventListener('loadeddata', videoLoadedHandler);
+        
+        // Fallback: hide loading screen after 5 seconds if video doesn't load
+        setTimeout(() => {
+          if (!isVideoReady) {
+            isVideoReady = true;
+            tryHideLoading();
+          }
+        }, 5000);
+      }
+
+      // Page ready check
+      if (document.readyState === 'complete') {
+        isPageReady = true;
+        tryHideLoading();
+      } else {
+        window.addEventListener('load', () => {
+          isPageReady = true;
+          tryHideLoading();
+        });
+      }
+    }
+
+    // Initialize loading screen check
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkVideoLoaded);
+    } else {
+      checkVideoLoaded();
+    }
+
     // Initialize language on page load - moved here for better performance
     document.addEventListener('DOMContentLoaded', function() {
       const savedLanguage = localStorage.getItem('language') || 'en';
       switchLanguage(savedLanguage);
     });
   </script>
+
+  </div> <!-- End Main Content -->
 
 </body>
 
